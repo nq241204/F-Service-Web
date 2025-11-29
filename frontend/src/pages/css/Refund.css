@@ -1,0 +1,381 @@
+/* Refund Page Styles */
+.refund {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.refund__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.refund__header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+}
+
+.refund__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.refund__subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.refund__content {
+  display: grid;
+  gap: 60px;
+}
+
+.refund__policy {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.refund__section {
+  margin-bottom: 50px;
+}
+
+.refund__section:last-child {
+  margin-bottom: 0;
+}
+
+.refund__section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.refund__section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+  margin: 30px 0 15px 0;
+}
+
+.refund__section p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.refund__section ul {
+  margin: 20px 0;
+  padding-left: 25px;
+}
+
+.refund__section li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.refund__section li:last-child {
+  margin-bottom: 0;
+}
+
+.refund__levels {
+  display: grid;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.refund__level {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #667eea;
+}
+
+.refund__level h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.refund__timeline {
+  display: grid;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.refund__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.refund__step-number {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.refund__step-content {
+  flex: 1;
+}
+
+.refund__step-content h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.refund__step-content p {
+  color: #666;
+  margin-bottom: 0;
+}
+
+.refund__request {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.refund__request h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.refund__request p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.refund__form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.refund__form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.refund__form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.refund__form-group input,
+.refund__form-group select,
+.refund__form-group textarea {
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.refund__form-group input:focus,
+.refund__form-group select:focus,
+.refund__form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.refund__form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.refund__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.refund__form-note {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
+}
+
+.refund__form-note p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.refund__form-note p:last-child {
+  margin-bottom: 0;
+}
+
+.refund__form-note strong {
+  color: #333;
+}
+
+.refund__form-note ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.refund__form-note li {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.refund__btn {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.refund__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.refund__contact {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.refund__contact h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.refund__contact p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.refund__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.refund__contact-item {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.refund__contact-item strong {
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .refund__title {
+    font-size: 2rem;
+  }
+  
+  .refund__policy,
+  .refund__request {
+    padding: 30px 20px;
+  }
+  
+  .refund__section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .refund__section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .refund__section p,
+  .refund__section li {
+    font-size: 1rem;
+  }
+  
+  .refund__form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .refund__step {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .refund__contact {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .refund__header {
+    margin-bottom: 40px;
+  }
+  
+  .refund__policy,
+  .refund__request {
+    padding: 20px;
+  }
+  
+  .refund__section {
+    margin-bottom: 30px;
+  }
+  
+  .refund__section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .refund__section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .refund__section ul {
+    padding-left: 20px;
+  }
+  
+  .refund__btn {
+    width: 100%;
+  }
+}

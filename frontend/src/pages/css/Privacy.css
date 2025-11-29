@@ -1,0 +1,151 @@
+/* Privacy Page Styles */
+.privacy {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.privacy__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.privacy__header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+}
+
+.privacy__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.privacy__subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.privacy__content {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  line-height: 1.7;
+}
+
+.privacy__section {
+  margin-bottom: 50px;
+}
+
+.privacy__section:last-child {
+  margin-bottom: 0;
+}
+
+.privacy__section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.privacy__section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+  margin: 30px 0 15px 0;
+}
+
+.privacy__section p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.privacy__section ul {
+  margin: 20px 0;
+  padding-left: 25px;
+}
+
+.privacy__section li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.privacy__section li:last-child {
+  margin-bottom: 0;
+}
+
+.privacy__footer {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: center;
+  border-left: 4px solid #667eea;
+}
+
+.privacy__footer p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .privacy__title {
+    font-size: 2rem;
+  }
+  
+  .privacy__content {
+    padding: 30px 20px;
+  }
+  
+  .privacy__section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .privacy__section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .privacy__section p,
+  .privacy__section li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy__header {
+    margin-bottom: 40px;
+  }
+  
+  .privacy__content {
+    padding: 20px;
+  }
+  
+  .privacy__section {
+    margin-bottom: 30px;
+  }
+  
+  .privacy__section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .privacy__section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .privacy__section ul {
+    padding-left: 20px;
+  }
+}

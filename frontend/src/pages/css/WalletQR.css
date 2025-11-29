@@ -1,0 +1,148 @@
+/* Wallet QR Code Styles */
+.wallet__qr-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.wallet__qr-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.wallet__qr-header h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.wallet__qr-header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.wallet__qr-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.wallet__qr-image {
+  flex: 0 0 256px;
+  text-align: center;
+  min-width: 256px;
+}
+
+.wallet__qr-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.wallet__qr-placeholder {
+  width: 256px;
+  height: 256px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  color: #666;
+}
+
+.wallet__qr-code-text {
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+  padding: 10px;
+  max-width: 236px;
+}
+
+.wallet__qr-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.wallet__qr-info h4 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.wallet__qr-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.wallet__qr-info li {
+  padding: 4px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.wallet__qr-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wallet__qr-note {
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.wallet__qr-note p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wallet__qr-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .wallet__qr-image {
+    flex: none;
+  }
+  
+  .wallet__qr-info {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .wallet__qr-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .wallet__qr-image {
+    flex: 0 0 200px;
+    min-width: 200px;
+  }
+  
+  .wallet__qr-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .wallet__qr-image img {
+    max-width: 200px;
+  }
+}

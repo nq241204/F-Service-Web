@@ -1,0 +1,540 @@
+/* Social Login and CAPTCHA Styles for Login Page */
+
+/* Social Login Section */
+.login__social-section {
+  margin: 20px 0;
+}
+
+.login__divider {
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.login__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+
+.login__divider span {
+  background: white;
+  padding: 0 15px;
+  color: #64748b;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Social Login Buttons */
+.login__social-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.login__social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login__social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login__social-btn:active {
+  transform: translateY(0);
+}
+
+.login__social-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Google Button */
+.login__social-btn--google {
+  border-color: #e0e0e0;
+  color: #5f6368;
+}
+
+.login__social-btn--google:hover {
+  border-color: #4285f4;
+  color: #4285f4;
+  background: #f8f9fa;
+}
+
+.login__social-btn--google::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(66, 133, 244, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.login__social-btn--google:hover::before {
+  left: 100%;
+}
+
+/* Facebook Button */
+.login__social-btn--facebook {
+  border-color: #e0e0e0;
+  color: #1c1e21;
+}
+
+.login__social-btn--facebook:hover {
+  border-color: #1877f2;
+  color: #1877f2;
+  background: #f7f8fa;
+}
+
+.login__social-btn--facebook::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(24, 119, 242, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.login__social-btn--facebook:hover::before {
+  left: 100%;
+}
+
+/* Social Icons */
+.login__social-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* CAPTCHA Section */
+.login__captcha-section {
+  margin: 20px 0;
+}
+
+/* Google reCAPTCHA Styles */
+.captcha-container {
+  margin: 16px 0;
+}
+
+.captcha-wrapper {
+  position: relative;
+}
+
+.captcha-field {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.captcha-field.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.captcha-field.verified {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.captcha-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.captcha-required {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.captcha-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 78px;
+}
+
+.captcha-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.captcha-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e2e8f0;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.captcha-error,
+.captcha-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.captcha-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.captcha-success {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.captcha-error-icon,
+.captcha-success-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.captcha-hint {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Math CAPTCHA Styles */
+.math-captcha-container {
+  margin: 16px 0;
+}
+
+.math-captcha-wrapper {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.math-captcha-field.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.math-captcha-field.verified {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.math-captcha-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.math-captcha-question {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  min-width: 120px;
+  text-align: center;
+}
+
+.math-captcha-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.math-captcha-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.math-captcha-verify-btn {
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.math-captcha-verify-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.math-captcha-verify-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #10b981;
+}
+
+.math-captcha-error,
+.math-captcha-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.math-captcha-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.math-captcha-success {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.math-captcha-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.math-captcha-reset-btn {
+  padding: 8px 12px;
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.math-captcha-reset-btn:hover:not(:disabled) {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.math-captcha-reset-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* CAPTCHA Toggle for Development */
+.login__captcha-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.login__captcha-toggle-btn {
+  padding: 6px 12px;
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login__captcha-toggle-btn:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login__social-buttons {
+    flex-direction: column;
+  }
+  
+  .login__social-btn {
+    width: 100%;
+  }
+  
+  .math-captcha-question {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .question-text {
+    min-width: auto;
+    text-align: center;
+  }
+  
+  .math-captcha-input {
+    width: 100%;
+  }
+  
+  .math-captcha-verify-btn {
+    width: 100%;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .login__divider span {
+    background: #1f2937;
+    color: #9ca3af;
+  }
+  
+  .login__divider::before {
+    background: linear-gradient(to right, transparent, #374151, transparent);
+  }
+  
+  .login__social-btn {
+    background: #1f2937;
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  
+  .login__social-btn:hover {
+    background: #374151;
+  }
+  
+  .captcha-field,
+  .math-captcha-wrapper {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .captcha-label,
+  .math-captcha-label {
+    color: #f3f4f6;
+  }
+  
+  .question-text {
+    color: #f3f4f6;
+  }
+  
+  .math-captcha-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+  
+  .captcha-hint {
+    background: #374151;
+    color: #9ca3af;
+  }
+}
+
+/* Animation Effects */
+.login__social-btn {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.login__social-btn:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.login__social-btn:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading State */
+.login__social-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.login__social-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.login__social-btn--google.loading {
+  color: #4285f4;
+}
+
+.login__social-btn--facebook.loading {
+  color: #1877f2;
+}

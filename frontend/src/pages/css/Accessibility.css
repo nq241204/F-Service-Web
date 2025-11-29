@@ -1,0 +1,401 @@
+/* Accessibility Page Styles */
+.accessibility {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.accessibility__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.accessibility__header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+}
+
+.accessibility__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility__subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.accessibility__content {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  line-height: 1.7;
+}
+
+.accessibility__section {
+  margin-bottom: 50px;
+}
+
+.accessibility__section:last-child {
+  margin-bottom: 0;
+}
+
+.accessibility__section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.accessibility__section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+  margin: 30px 0 15px 0;
+}
+
+.accessibility__section p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.accessibility__section ul {
+  margin: 20px 0;
+  padding-left: 25px;
+}
+
+.accessibility__section li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.accessibility__section li:last-child {
+  margin-bottom: 0;
+}
+
+.accessibility__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.accessibility__feature {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accessibility__feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+}
+
+.accessibility__feature h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accessibility__feature p {
+  color: #666;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.accessibility__tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.accessibility__tool {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #667eea;
+}
+
+.accessibility__tool h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.accessibility__tool ul {
+  margin-bottom: 0;
+}
+
+.accessibility__tool li {
+  margin-bottom: 8px;
+}
+
+.accessibility__tool a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.accessibility__tool a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.accessibility__shortcuts {
+  display: grid;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.accessibility__shortcut {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.accessibility__shortcut:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.accessibility__shortcut kbd {
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  min-width: 100px;
+  text-align: center;
+}
+
+.accessibility__shortcut span {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.accessibility__report {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 30px;
+  border-left: 4px solid #ffc107;
+}
+
+.accessibility__report h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.accessibility__report h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  margin: 20px 0 10px 0;
+}
+
+.accessibility__report ul {
+  margin-bottom: 20px;
+}
+
+.accessibility__report a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.accessibility__report a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.accessibility__roadmap {
+  display: grid;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.accessibility__roadmap-item {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #667eea;
+}
+
+.accessibility__roadmap-item h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.accessibility__roadmap-item ul {
+  margin-bottom: 0;
+}
+
+.accessibility__contact {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.accessibility__contact h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.accessibility__contact p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.accessibility__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.accessibility__contact-item {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.accessibility__contact-item strong {
+  color: #333;
+}
+
+.accessibility__footer {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: center;
+  border-left: 4px solid #667eea;
+}
+
+.accessibility__footer p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .accessibility__title {
+    font-size: 2rem;
+  }
+  
+  .accessibility__content {
+    padding: 30px 20px;
+  }
+  
+  .accessibility__section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .accessibility__section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .accessibility__section p,
+  .accessibility__section li {
+    font-size: 1rem;
+  }
+  
+  .accessibility__features {
+    grid-template-columns: 1fr;
+  }
+  
+  .accessibility__tools {
+    grid-template-columns: 1fr;
+  }
+  
+  .accessibility__shortcut {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .accessibility__contact-info {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility__header {
+    margin-bottom: 40px;
+  }
+  
+  .accessibility__content {
+    padding: 20px;
+  }
+  
+  .accessibility__section {
+    margin-bottom: 30px;
+  }
+  
+  .accessibility__section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .accessibility__section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .accessibility__section ul {
+    padding-left: 20px;
+  }
+  
+  .accessibility__feature,
+  .accessibility__tool,
+  .accessibility__roadmap-item {
+    padding: 20px;
+  }
+  
+  .accessibility__shortcut kbd {
+    min-width: 80px;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
