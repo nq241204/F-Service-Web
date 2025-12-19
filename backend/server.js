@@ -94,6 +94,14 @@ app.use((req, res, next) => {
   console.log(`📝 ${timestamp} - ${method} ${path} - IP: ${ip}`);
   next();
 });
+// Root health check (REQUIRED for Render)
+app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'F-Service Backend is running',
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

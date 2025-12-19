@@ -67,5 +67,5 @@ services:
     publishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
-        value: https://f-service-backend.onrender.com
+        value: https://f-service-backend.onrender.com/api
     autoDeploy: true

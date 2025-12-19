@@ -1,4 +1,5 @@
 // frontend/src/services/api.js
+/*
 import axios from 'axios';
 import authUtilsEnhanced from '../utils/authUtilsEnhanced';
 
@@ -39,4 +40,7 @@ api.interceptors.response.use(
   }
 );
 
+export default api;
+*/
+import api from '../config/api';
 export default api;
