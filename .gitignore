@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 package-lock.json
-
+/backend/.env
+/backend/.env.production
 # Environment variables
 .env
 .env.local

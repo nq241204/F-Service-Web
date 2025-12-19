@@ -34,6 +34,19 @@ router.post(
 router.post(
     '/generate-qr',
     auth,
+    [
+        require('express-validator').body('amount')
+            .isNumeric({ gt: 0 })
+            .withMessage('Số tiền phải là số dương'),
+        require('express-validator').body('amount')
+            .custom((value) => {
+                if (value < 10000) {
+                    throw new Error('Số tiền tối thiểu là 10,000 VNĐ');
+                }
+                return true;
+            }),
+        handleValidationErrors
+    ],
     walletController.generateQRCode
 );
 
@@ -46,6 +59,16 @@ router.post('/generate-qr-public', walletController.generateQRCode);
 router.post(
     '/confirm-deposit/:transactionId',
     adminAuth,
+    [
+        require('express-validator').param('transactionId')
+            .isMongoId()
+            .withMessage('ID giao dịch không hợp lệ'),
+        require('express-validator').body('notes')
+            .optional()
+            .isLength({ max: 500 })
+            .withMessage('Ghi chú không được vượt quá 500 ký tự'),
+        handleValidationErrors
+    ],
     walletController.confirmDeposit
 );
 
@@ -54,6 +77,18 @@ router.post(
 router.post(
     '/reject-deposit/:transactionId',
     adminAuth,
+    [
+        require('express-validator').param('transactionId')
+            .isMongoId()
+            .withMessage('ID giao dịch không hợp lệ'),
+        require('express-validator').body('reason')
+            .notEmpty()
+            .withMessage('Lý do từ chối không được để trống'),
+        require('express-validator').body('reason')
+            .isLength({ min: 5, max: 500 })
+            .withMessage('Lý do từ chối phải từ 5-500 ký tự'),
+        handleValidationErrors
+    ],
     walletController.rejectDeposit
 );
 

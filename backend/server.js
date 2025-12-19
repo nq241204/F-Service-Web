@@ -5,16 +5,64 @@ const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require('helmet');
 const cors = require('cors');
-const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
 const logger = require('./config/logger');
+const { securityMonitor, generateAuditReport } = require('./middleware/securityMonitoring');
 
 const app = express();
 
-// Security middleware
+// Enhanced security middleware
 app.use(helmet());
+
+// Security monitoring - MUST be before other middleware
+app.use(securityMonitor);
+
+// MongoDB sanitization - FIXED for Express v5 compatibility
+app.use((req, res, next) => {
+    // Sanitize body
+    if (req.body) {
+        req.body = JSON.parse(JSON.stringify(req.body).replace(/\$/g, '_'));
+    }
+    // Sanitize query params
+    if (req.query) {
+        req.query = JSON.parse(JSON.stringify(req.query).replace(/\$/g, '_'));
+    }
+    // Sanitize params
+    if (req.params) {
+        req.params = JSON.parse(JSON.stringify(req.params).replace(/\$/g, '_'));
+    }
+    next();
+});
+
+app.use(hpp());
+
+// Rate limiting - ENABLED for security
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: {
+        error: 'Too many requests from this IP, please try again later.',
+        retryAfter: '15 minutes'
+    },
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+app.use('/api/', limiter);
+
+// Stricter auth rate limiting
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // limit each IP to 5 auth requests per windowMs
+    message: {
+        error: 'Too many authentication attempts, please try again later.',
+        retryAfter: '15 minutes'
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+app.use('/api/auth', authLimiter);
 const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3000')
     .split(',')
     .map(origin => origin.trim())
@@ -32,20 +80,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// MongoDB sanitization (tạm thời disable do lỗi version)
-// app.use(mongoSanitize({
-//     replaceWith: '_'
-// }));
-
-app.use(hpp());
-
-// Rate limiting (tạm thời disable cho development)
-// const limiter = rateLimit({
-//     windowMs: 15 * 60 * 1000, // 15 minutes
-//     max: 100 // limit each IP to 100 requests per windowMs
-// });
-// app.use('/api/', limiter);
 
 // Body parser middleware
 app.use(express.json({ limit: '10mb' }));
@@ -151,6 +185,11 @@ async function initializeApp() {
         process.on('SIGINT', () => {
             console.log('\n🛑 Nhận tín hiệu SIGINT (Ctrl+C). Đang đóng server...');
             
+            // Generate final security audit report
+            console.log('📊 Generating final security audit report...');
+            const reportPath = generateAuditReport();
+            console.log(`📋 Security report saved to: ${reportPath}`);
+            
             server.close(() => {
                 console.log('✅ Server đã đóng.');
                 mongoose.connection.close(false, () => {
@@ -159,6 +198,13 @@ async function initializeApp() {
                 });
             });
         });
+
+        // Schedule daily security reports
+        setInterval(() => {
+            console.log('📊 Generating daily security audit report...');
+            const reportPath = generateAuditReport();
+            console.log(`📋 Daily security report saved to: ${reportPath}`);
+        }, 24 * 60 * 60 * 1000); // Every 24 hours
 
     } catch (error) {
         console.error('Không thể khởi động server:', error);

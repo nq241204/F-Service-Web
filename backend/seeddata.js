@@ -1,6 +1,5 @@
 // seeddata.js - Tạo dữ liệu mẫu cho F-Service
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 // Import models
 const User = require('./models/User');

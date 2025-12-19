@@ -10,22 +10,35 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 const DichVu = require('../models/DichVu');
 const { upload } = require('../middleware/uploadMiddleware');
 const { receiveService } = require('../controllers/receiveServiceController');
+const mongoose = require('mongoose');
 
 // @route   GET /api/service
 // @desc    Get all services
 // @access  Public
 router.get('/', async (req, res) => {
     try {
-        const services = await DichVu.find().populate('NguoiTao', 'name').lean();
+        console.log('Attempting to fetch services...');
+        
+        // Check database connection
+        if (mongoose.connection.readyState !== 1) {
+            throw new Error('Database not connected');
+        }
+        
+        // Basic query with error handling
+        const services = await DichVu.find({});
+        console.log(`Found ${services.length} services`);
+        
         res.json({
             success: true,
-            data: services
+            data: services,
+            count: services.length
         });
     } catch (error) {
         console.error('Error getting services:', error);
         res.status(500).json({
             success: false,
-            message: 'Lỗi khi lấy danh sách dịch vụ'
+            message: 'Lỗi khi lấy danh sách dịch vụ',
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
         });
     }
 });
@@ -33,7 +46,22 @@ router.get('/', async (req, res) => {
 // @route   GET /api/service/:id
 // @desc    Get service by ID
 // @access  Public
-router.get('/:id', async (req, res) => {
+router.get('/:id', [
+    // Add validation for service ID
+    require('express-validator').param('id')
+        .isMongoId()
+        .withMessage('ID dịch vụ không hợp lệ')
+], async (req, res) => {
+    // Check validation errors
+    const errors = require('express-validator').validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID dịch vụ không hợp lệ',
+            errors: errors.array()
+        });
+    }
+
     try {
         const service = await DichVu.findById(req.params.id)
             .populate('NguoiDung', 'name email')

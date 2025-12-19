@@ -66,7 +66,7 @@ const accountLockout = (req, res, next) => {
   next();
 };
 
-// Enhanced Rate Limiting
+// Enhanced Rate Limiting (Updated for v7 compatibility with IPv6 support)
 const createRateLimiter = (options) => {
   return rateLimit({
     windowMs: options.windowMs || 15 * 60 * 1000,
@@ -78,11 +78,7 @@ const createRateLimiter = (options) => {
     },
     standardHeaders: true,
     legacyHeaders: false,
-    keyGenerator: options.keyGenerator || ((req) => req.ip),
-    skip: options.skip || ((req) => false),
-    onLimitReached: options.onLimitReached || ((req, res) => {
-      console.warn(`Rate limit exceeded for IP: ${req.ip}, Path: ${req.path}`);
-    })
+    skip: options.skip || ((req) => false)
   });
 };
 
@@ -90,10 +86,7 @@ const createRateLimiter = (options) => {
 const authLimiter = createRateLimiter({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // 5 attempts per 15 minutes
-  message: 'Too many authentication attempts, please try again later.',
-  onLimitReached: (req, res) => {
-    console.warn(`🚨 Auth rate limit exceeded: ${req.ip} - ${req.path}`);
-  }
+  message: 'Too many authentication attempts, please try again later.'
 });
 
 const generalLimiter = createRateLimiter({
@@ -105,10 +98,7 @@ const generalLimiter = createRateLimiter({
 const passwordResetLimiter = createRateLimiter({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 3, // 3 password reset attempts per hour
-  message: 'Too many password reset attempts, please try again later.',
-  onLimitReached: (req, res) => {
-    console.warn(`🚨 Password reset rate limit exceeded: ${req.ip}`);
-  }
+  message: 'Too many password reset attempts, please try again later.'
 });
 
 // Enhanced Security Headers

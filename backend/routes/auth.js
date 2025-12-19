@@ -18,7 +18,12 @@ router.post('/register-member', memberRegistrationController.registerMember);
 // @route   GET /api/auth/member-status/:userId
 // @desc    Get member registration status
 // @access  Public
-router.get('/member-status/:userId', memberRegistrationController.getMemberStatus);
+router.get('/member-status/:userId', [
+    // Add validation for user ID
+    require('express-validator').param('userId')
+        .isMongoId()
+        .withMessage('ID người dùng không hợp lệ')
+], memberRegistrationController.getMemberStatus);
 
 // @route   POST /api/auth/resend-member-confirmation
 // @desc    Resend member registration confirmation
