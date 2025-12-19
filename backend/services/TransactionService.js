@@ -4,6 +4,7 @@ const GiaoDich = require('../models/GiaoDich');
 const ViGiaoDich = require('../models/ViGiaoDich');
 const DichVu = require('../models/DichVu');
 const config = require('../config/app');
+const logger = require('../config/logger');
 
 class TransactionService {
     // Get user wallet
@@ -15,7 +16,7 @@ class TransactionService {
             }).lean();
             return wallet;
         } catch (error) {
-            console.error('Error getting user wallet:', error);
+            logger.error('Error getting user wallet:', error);
             return null;
         }
     }
@@ -163,7 +164,7 @@ class TransactionService {
                 return acc;
             }, {});
         } catch (error) {
-            console.error('Error getting transaction stats:', error);
+            logger.error('Error getting transaction stats:', error);
             return {};
         }
     }

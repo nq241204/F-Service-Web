@@ -6,6 +6,7 @@ const GiaoDich = require('../models/GiaoDich');
 const ViGiaoDich = require('../models/ViGiaoDich');
 const User = require('../models/User');
 const Member = require('../models/Member');
+const logger = require('../config/logger');
 
 class TransactionAutoConfirmService {
     // Xác nhận giao dịch nạp tiền tự động
@@ -136,7 +137,7 @@ class TransactionAutoConfirmService {
                 createdAt: { $lte: cutoffTime }
             }).select('_id Loai');
 
-            console.log(`[Auto Confirm] Tìm thấy ${pendingTransactions.length} giao dịch để xác nhận tự động`);
+            logger.info(`[Auto Confirm] Tìm thấy ${pendingTransactions.length} giao dịch để xác nhận tự động`);
 
             const results = {
                 success: 0,
@@ -161,10 +162,10 @@ class TransactionAutoConfirmService {
                 }
             }
 
-            console.log(`[Auto Confirm] Kết quả: ${results.success} thành công, ${results.failed} thất bại`);
+            logger.info(`[Auto Confirm] Kết quả: ${results.success} thành công, ${results.failed} thất bại`);
             return results;
         } catch (error) {
-            console.error('[Auto Confirm] Lỗi xử lý giao dịch pending:', error);
+            logger.error('[Auto Confirm] Lỗi xử lý giao dịch pending:', error);
             throw error;
         }
     }
@@ -208,7 +209,7 @@ class TransactionAutoConfirmService {
                 };
             }
         } catch (error) {
-            console.error('Lỗi kiểm tra và xác nhận giao dịch:', error);
+            logger.error('Lỗi kiểm tra và xác nhận giao dịch:', error);
             throw error;
         }
     }
@@ -244,7 +245,7 @@ class TransactionAutoConfirmService {
 
             return true;
         } catch (error) {
-            console.error('Lỗi xác thực giao dịch:', error);
+            logger.error('Lỗi xác thực giao dịch:', error);
             return false;
         }
     }
@@ -260,7 +261,7 @@ class TransactionAutoConfirmService {
                 createdAt: { $lte: cutoffTime }
             }).select('_id Loai SoTien NguoiThamGia');
 
-            console.log(`[Cancel Stale] Tìm thấy ${staleTransactions.length} giao dịch để hủy`);
+            logger.info(`[Cancel Stale] Tìm thấy ${staleTransactions.length} giao dịch để hủy`);
 
             const results = {
                 cancelled: 0,
@@ -297,10 +298,10 @@ class TransactionAutoConfirmService {
                 }
             }
 
-            console.log(`[Cancel Stale] Kết quả: ${results.cancelled} hủy, ${results.refunded} hoàn tiền`);
+            logger.info(`[Cancel Stale] Kết quả: ${results.cancelled} hủy, ${results.refunded} hoàn tiền`);
             return results;
         } catch (error) {
-            console.error('[Cancel Stale] Lỗi hủy giao dịch:', error);
+            logger.error('[Cancel Stale] Lỗi hủy giao dịch:', error);
             throw error;
         }
     }

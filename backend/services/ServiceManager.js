@@ -5,6 +5,7 @@ const User = require('../models/User');
 const GiaoDich = require('../models/GiaoDich');
 const ViGiaoDich = require('../models/ViGiaoDich');
 const config = require('../config/app');
+const logger = require('../config/logger');
 
 class ServiceManager {
     // Tạo dịch vụ mới

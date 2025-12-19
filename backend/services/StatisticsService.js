@@ -6,6 +6,7 @@ const GiaoDich = require('../models/GiaoDich');
 const ViGiaoDich = require('../models/ViGiaoDich');
 const User = require('../models/User');
 const UyThac = require('../models/UyThac');
+const logger = require('../config/logger');
 
 class StatisticsService {
     /**
@@ -79,11 +80,11 @@ class StatisticsService {
                             break;
                         case 'service_escrow':
                             stats.totalPaid += tx.SoTien;
-                            console.log(`Adding escrow payment: ${tx.SoTien}, Total paid: ${stats.totalPaid}`);
+                            logger.info(`Adding escrow payment: ${tx.SoTien}, Total paid: ${stats.totalPaid}`);
                             break;
                         case 'service_payment': // For backward compatibility
                             stats.totalPaid += tx.SoTien;
-                            console.log(`Adding service payment: ${tx.SoTien}, Total paid: ${stats.totalPaid}`);
+                            logger.info(`Adding service payment: ${tx.SoTien}, Total paid: ${stats.totalPaid}`);
                             break;
                     }
                     stats.successfulTransactions++;
@@ -110,7 +111,7 @@ class StatisticsService {
             stats.totalPaidFormatted = this.formatCurrency(stats.totalPaid);
 
             // DEBUG: Log để kiểm tra logic
-            console.log(`Wallet stats for user ${userId}:`, {
+            logger.info(`Wallet stats for user ${userId}:`, {
                 balance: stats.balance,
                 totalDeposit: stats.totalDeposit,
                 totalWithdraw: stats.totalWithdraw,
@@ -125,7 +126,7 @@ class StatisticsService {
             // Kiểm tra sự nhất quán giữa số dư ví và tính toán
             const calculatedBalance = stats.totalDeposit - stats.totalWithdraw - stats.totalPaid;
             if (Math.abs(stats.balance - calculatedBalance) > 100) { // Chênh lệch > 100đ
-                console.warn(`Balance inconsistency detected for user ${userId}:`, {
+                logger.warn(`Balance inconsistency detected for user ${userId}:`, {
                     walletBalance: stats.balance,
                     calculatedBalance: calculatedBalance,
                     difference: stats.balance - calculatedBalance
@@ -143,7 +144,7 @@ class StatisticsService {
 
             return stats;
         } catch (error) {
-            console.error('Error getting wallet statistics:', error);
+            logger.error('Error getting wallet statistics:', error);
             throw error;
         }
     }
@@ -203,7 +204,7 @@ class StatisticsService {
 
             return stats;
         } catch (error) {
-            console.error('Error getting commission statistics:', error);
+            logger.error('Error getting commission statistics:', error);
             throw error;
         }
     }
@@ -242,7 +243,7 @@ class StatisticsService {
                 }
             };
         } catch (error) {
-            console.error('Error getting full statistics:', error);
+            logger.error('Error getting full statistics:', error);
             throw error;
         }
     }
@@ -280,7 +281,7 @@ class StatisticsService {
                 message: 'Dữ liệu user đã được đồng bộ'
             };
         } catch (error) {
-            console.error('Error syncing user data:', error);
+            logger.error('Error syncing user data:', error);
             throw error;
         }
     }
@@ -318,7 +319,7 @@ class StatisticsService {
                 errors: errors.length > 0 ? errors : undefined
             };
         } catch (error) {
-            console.error('Error syncing all users:', error);
+            logger.error('Error syncing all users:', error);
             throw error;
         }
     }

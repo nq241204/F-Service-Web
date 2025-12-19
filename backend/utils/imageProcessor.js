@@ -2,6 +2,7 @@
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs').promises;
+const logger = require('../config/logger');
 
 // Kích thước ảnh cho từng loại
 const imageSizes = {
@@ -45,7 +46,7 @@ async function processImage(filepath) {
 
         return outputPaths;
     } catch (error) {
-        console.error('Lỗi xử lý ảnh:', error);
+        logger.error('Lỗi xử lý ảnh:', error);
         throw new Error('Có lỗi xảy ra khi xử lý ảnh');
     }
 }
